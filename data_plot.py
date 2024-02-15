@@ -23,24 +23,24 @@ warnings.filterwarnings('ignore')
 
 # import energy consumption data
 sub_sheet_name = ["二层插座","二层照明","一层插座","一层照明","空调"]
-data_dict = {}
+datadict = {}
 for name in sub_sheet_name:
-    data_dict[name] = pd.read_csv('Data_A/' + name + '_EC.csv')
-    data_dict[name]["time"] = pd.to_datetime(data_dict[name]["time"])
+    datadict[name] = pd.read_csv('dataA/' + name + '_EC.csv')
+    datadict[name]["time"] = pd.to_datetime(datadict[name]["time"])
     
 # import weather info
 
-wh = pd.read_csv("Data_A/天气.csv")
+wh = pd.read_csv("dataA/天气.csv")
 wh["日期"] = pd.to_datetime(wh["日期"])
 wh["time"] = wh["日期"] + pd.to_timedelta(wh["小时"],"h")
 #wh.drop(["Unnamed:0","日期","小时"], axis=1, inplace=True)
 
 # missing value processing
 
-data = pd.merge(data_dict["二层插座"], data_dict["二层照明"], on = 'time', how = 'inner', suffixes=('_socket_2','_light_2'))
-data = pd.merge(data,data_dict["一层插座"],on='time',how='inner',suffixes=('','_socket_1'))
-data = pd.merge(data,data_dict["一层照明"],on='time',how='inner',suffixes=('','_light_1'))
-data = pd.merge(data,data_dict["空调"],on='time',how='inner',suffixes=('','_air'))
+data = pd.merge(datadict["二层插座"], datadict["二层照明"], on = 'time', how = 'inner', suffixes=('_socket_2','_light_2'))
+data = pd.merge(data,datadict["一层插座"],on='time',how='inner',suffixes=('','_socket_1'))
+data = pd.merge(data,datadict["一层照明"],on='time',how='inner',suffixes=('','_light_1'))
+data = pd.merge(data,datadict["空调"],on='time',how='inner',suffixes=('','_air'))
 data = data.rename(columns={"value":"value_socket_1"})
 
 
