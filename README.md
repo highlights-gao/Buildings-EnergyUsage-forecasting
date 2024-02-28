@@ -6,19 +6,21 @@ The goal of this project is to forecast the energy usage of a business building 
 ## Data Description
 ### Energy Usage Data
 - **Time Period:** Two years
-- **Granularity:** Hourly
+- **Granularity:** 15 amins
 - **Components:** 
   - Air conditioning
-  - Lighting
-  - Sockets
+  - Light
+  - Socket
 
 ### Weather Data
-- **Source:** Weather API or historical weather data repository
-- **Parameters:** 
+
+- **Parameters:**
+  - hours
   - Temperature
   - Humidity
-  - Precipitation
+  - Precipitation （mm）
   - Wind Speed
+  - cloudiness(%)
   - Other relevant weather variables
 
 ## Methodology
@@ -34,7 +36,7 @@ The goal of this project is to forecast the energy usage of a business building 
    - Tune hyperparameters using techniques such as grid search or random search.
 
 3. **Model Evaluation:**
-   - Evaluate the performance of each model using appropriate metrics (e.g., RMSE, MAE, MAPE).
+   - Evaluate the performance of each model using appropriate metrics (e.g., RMSE, MAE, MAPE).Here R2-Score is used.
    - Compare the accuracy and computational efficiency of the models.
    - Analyze any insights gained from the evaluation process.
 
@@ -44,5 +46,5 @@ The goal of this project is to forecast the energy usage of a business building 
    - Assess the uncertainty of the forecasts and provide confidence intervals if applicable.
 
 ## Conclusion
-This project aims to provide accurate forecasts of energy usage for a business building by leveraging historical data and weather conditions. By comparing the performance of various baseline algorithms, we aim to identify the most effective approach for forecasting energy consumption. The insights gained from this project can help optimize energy management strategies and improve overall efficiency in commercial buildings.
+This project aims to provide accurate forecasts of energy usage for a business building by leveraging historical data and weather conditions. By comparing the performance of various baseline algorithms, I aim to identify the most effective approach for forecasting energy consumption. The insights gained from this project can help optimize energy management strategies and improve overall efficiency in commercial buildings.
 
